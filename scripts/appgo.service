@@ -1,0 +1,11 @@
+[Unit]
+Description=My go app
+
+[Service]
+ExecStart=/usr/local/bin/./myapp.sh
+User=root
+Group=root
+UMask=007
+
+[Install]
+WantedBy=multi-user.target

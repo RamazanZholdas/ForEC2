@@ -1,0 +1,1 @@
+root:root@tcp(172.17.0.2:3306)/songs?parseTime=true

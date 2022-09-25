@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo GOPATH - $GOPATH
+      - export THEGOPATH=`echo $GOPATH | cut -c 5-`
+      - echo THEGOPATH = $THEGOPATH
+      - mkdir MyGoAPP
+#      - mkdir -p ${THEGOPATH}/src/APIWithGin
+#      - echo Copy source files to go root
+#      - cp -a ${CODEBUILD_SRC_DIR}/. /home/ec2-user/MyGoAPP
+      - ls ${THEGOPATH}/src/
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Getting packages
+      - go get ./...
+      - echo DOING THE BUILD
+#      - go build -ldflags "" -o "appname"
+      - go test ./...
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - ls -al
+      - pwd
+
+
+artifacts:
+  files:
+    - '**/*'
